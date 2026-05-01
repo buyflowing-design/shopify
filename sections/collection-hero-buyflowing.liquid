@@ -1,0 +1,515 @@
+{% comment %} BuyFlowing — Collection Hero Section {% endcomment %}
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+<div class="bf-collection-hero" id="bf-collection-hero-{{ section.id }}">
+
+  {%- comment -%} Fondo animado con partículas y rejilla {%- endcomment -%}
+  <div class="bf-ch-bg">
+    <div class="bf-ch-grid-overlay"></div>
+    <div class="bf-ch-glow bf-ch-glow--1"></div>
+    <div class="bf-ch-glow bf-ch-glow--2"></div>
+    <canvas class="bf-ch-particles" id="bf-particles-{{ section.id }}"></canvas>
+  </div>
+
+  {%- comment -%} Objeto 3D flotante {%- endcomment -%}
+  <div class="bf-ch-3d-wrap" aria-hidden="true">
+    <div class="bf-ch-3d-scene">
+      <div class="bf-ch-cube">
+        <div class="bf-ch-cube__face bf-ch-cube__face--front"></div>
+        <div class="bf-ch-cube__face bf-ch-cube__face--back"></div>
+        <div class="bf-ch-cube__face bf-ch-cube__face--left"></div>
+        <div class="bf-ch-cube__face bf-ch-cube__face--right"></div>
+        <div class="bf-ch-cube__face bf-ch-cube__face--top"></div>
+        <div class="bf-ch-cube__face bf-ch-cube__face--bottom"></div>
+      </div>
+    </div>
+    <div class="bf-ch-orbit bf-ch-orbit--1">
+      <div class="bf-ch-orbit-dot"></div>
+    </div>
+    <div class="bf-ch-orbit bf-ch-orbit--2">
+      <div class="bf-ch-orbit-dot bf-ch-orbit-dot--sm"></div>
+    </div>
+  </div>
+
+  {%- comment -%} Contenido principal {%- endcomment -%}
+  <div class="bf-ch-content">
+    <div class="bf-ch-badge">
+      <span class="bf-ch-badge__dot"></span>
+      <span>Biblioteca Scale Flow</span>
+    </div>
+
+    <h1 class="bf-ch-title">
+      {%- if collection.title != blank -%}
+        <span class="bf-ch-title__line">{{ collection.title }}</span>
+      {%- else -%}
+        <span class="bf-ch-title__line">Toda la</span>
+        <span class="bf-ch-title__line bf-ch-title__line--accent">Colección</span>
+      {%- endif -%}
+    </h1>
+
+    {%- if collection.description != blank -%}
+      <p class="bf-ch-desc">{{ collection.description }}</p>
+    {%- else -%}
+      <p class="bf-ch-desc">Guías verificadas por expertos, toolkits y estrategias potenciadas por IA para hacer crecer tu negocio más rápido.</p>
+    {%- endif -%}
+
+    <div class="bf-ch-stats">
+      <div class="bf-ch-stat">
+        <span class="bf-ch-stat__num">{{ collection.products_count }}</span>
+        <span class="bf-ch-stat__label">Productos</span>
+      </div>
+      <div class="bf-ch-stat-divider"></div>
+      <div class="bf-ch-stat">
+        <span class="bf-ch-stat__num">100%</span>
+        <span class="bf-ch-stat__label">Descarga instant.</span>
+      </div>
+      <div class="bf-ch-stat-divider"></div>
+      <div class="bf-ch-stat">
+        <span class="bf-ch-stat__num">AI</span>
+        <span class="bf-ch-stat__label">Optimizado</span>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Línea de scroll {%- endcomment -%}
+  <div class="bf-ch-scroll-cue" aria-hidden="true">
+    <div class="bf-ch-scroll-line"></div>
+  </div>
+</div>
+
+{% stylesheet %}
+  /* ── BuyFlowing Collection Hero ───────────────────────────────────── */
+  .bf-collection-hero {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #050505;
+    font-family: 'Inter', 'Outfit', sans-serif;
+  }
+
+  @media (min-width: 750px) {
+    .bf-collection-hero { min-height: 70vh; }
+  }
+
+  /* Fondo */
+  .bf-ch-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .bf-ch-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 245, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 245, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: bf-grid-move 20s linear infinite;
+  }
+
+  @keyframes bf-grid-move {
+    0%   { background-position: 0 0; }
+    100% { background-position: 60px 60px; }
+  }
+
+  .bf-ch-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+  }
+
+  .bf-ch-glow--1 {
+    width: 500px; height: 500px;
+    top: -120px; right: -100px;
+    background: radial-gradient(circle, rgba(0,245,255,0.14) 0%, transparent 70%);
+    animation: bf-glow-pulse 6s ease-in-out infinite alternate;
+  }
+
+  .bf-ch-glow--2 {
+    width: 400px; height: 400px;
+    bottom: -80px; left: -80px;
+    background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, transparent 70%);
+    animation: bf-glow-pulse 8s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes bf-glow-pulse {
+    0%   { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 1;   transform: scale(1.15); }
+  }
+
+  .bf-ch-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* ── 3D Object ──────────────────────────────────────── */
+  .bf-ch-3d-wrap {
+    position: absolute;
+    right: 8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 260px;
+    height: 260px;
+    display: none;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  @media (min-width: 1024px) {
+    .bf-ch-3d-wrap { display: flex; align-items: center; justify-content: center; }
+  }
+
+  .bf-ch-3d-scene {
+    width: 120px;
+    height: 120px;
+    perspective: 600px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .bf-ch-cube {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: bf-cube-rotate 12s linear infinite;
+  }
+
+  @keyframes bf-cube-rotate {
+    0%   { transform: rotateX(0deg)   rotateY(0deg)   rotateZ(0deg); }
+    33%  { transform: rotateX(120deg) rotateY(90deg)  rotateZ(45deg); }
+    66%  { transform: rotateX(240deg) rotateY(200deg) rotateZ(90deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+  }
+
+  .bf-ch-cube__face {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border: 1px solid rgba(0, 245, 255, 0.5);
+    background: rgba(0, 245, 255, 0.03);
+    backdrop-filter: blur(2px);
+    box-shadow: inset 0 0 20px rgba(0, 245, 255, 0.06),
+                0 0 20px rgba(0, 245, 255, 0.06);
+  }
+
+  .bf-ch-cube__face--front  { transform: translateZ(60px); }
+  .bf-ch-cube__face--back   { transform: rotateY(180deg) translateZ(60px); }
+  .bf-ch-cube__face--left   { transform: rotateY(-90deg) translateZ(60px); }
+  .bf-ch-cube__face--right  { transform: rotateY(90deg) translateZ(60px); }
+  .bf-ch-cube__face--top    { transform: rotateX(90deg) translateZ(60px); }
+  .bf-ch-cube__face--bottom { transform: rotateX(-90deg) translateZ(60px); }
+
+  /* Órbitas */
+  .bf-ch-orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-radius: 50%;
+    transform-style: preserve-3d;
+  }
+
+  .bf-ch-orbit--1 {
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+    transform: rotateX(75deg);
+    animation: bf-orbit-spin 8s linear infinite;
+  }
+
+  .bf-ch-orbit--2 {
+    width: 250px;
+    height: 250px;
+    margin: -125px 0 0 -125px;
+    transform: rotateX(75deg) rotateZ(60deg);
+    animation: bf-orbit-spin 14s linear infinite reverse;
+  }
+
+  @keyframes bf-orbit-spin {
+    0%   { transform: rotateX(75deg) rotateZ(0deg); }
+    100% { transform: rotateX(75deg) rotateZ(360deg); }
+  }
+
+  .bf-ch-orbit-dot {
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #00f5ff;
+    box-shadow: 0 0 10px #00f5ff, 0 0 20px rgba(0,245,255,0.5);
+  }
+
+  .bf-ch-orbit-dot--sm {
+    width: 6px;
+    height: 6px;
+    top: -3px;
+    background: #6366f1;
+    box-shadow: 0 0 8px #6366f1, 0 0 16px rgba(99,102,241,0.5);
+  }
+
+  /* ── Contenido ──────────────────────────────────────── */
+  .bf-ch-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 80px 24px 60px;
+    max-width: 680px;
+    animation: bf-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @media (min-width: 1024px) {
+    .bf-ch-content {
+      text-align: left;
+      margin-left: 8%;
+      margin-right: auto;
+    }
+  }
+
+  @keyframes bf-fade-up {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Badge */
+  .bf-ch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 245, 255, 0.08);
+    border: 1px solid rgba(0, 245, 255, 0.25);
+    border-radius: 100px;
+    padding: 6px 16px;
+    margin-bottom: 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #00f5ff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: bf-fade-up 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .bf-ch-badge__dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #00f5ff;
+    box-shadow: 0 0 8px #00f5ff;
+    animation: bf-dot-blink 2s ease-in-out infinite;
+  }
+
+  @keyframes bf-dot-blink {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px #00f5ff; }
+    50%       { opacity: 0.4; box-shadow: none; }
+  }
+
+  /* Título */
+  .bf-ch-title {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.05;
+    margin: 0 0 20px;
+    letter-spacing: -0.02em;
+    animation: bf-fade-up 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .bf-ch-title__line { display: block; }
+
+  .bf-ch-title__line--accent {
+    background: linear-gradient(135deg, #00f5ff, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Descripción */
+  .bf-ch-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+    color: rgba(226, 232, 240, 0.7);
+    line-height: 1.65;
+    margin: 0 0 32px;
+    max-width: 520px;
+    animation: bf-fade-up 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @media (min-width: 1024px) { .bf-ch-desc { margin: 0 0 32px; } }
+
+  /* Stats */
+  .bf-ch-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: bf-fade-up 0.8s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @media (min-width: 1024px) { .bf-ch-stats { justify-content: flex-start; } }
+
+  .bf-ch-stat { text-align: center; }
+
+  .bf-ch-stat__num {
+    display: block;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #00f5ff;
+    line-height: 1;
+  }
+
+  .bf-ch-stat__label {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(226, 232, 240, 0.5);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .bf-ch-stat-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(0, 245, 255, 0.2);
+  }
+
+  /* Scroll cue */
+  .bf-ch-scroll-cue {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+  }
+
+  .bf-ch-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(0,245,255,0.6), transparent);
+    margin: 0 auto;
+    animation: bf-scroll-pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes bf-scroll-pulse {
+    0%   { opacity: 0; transform: scaleY(0); transform-origin: top; }
+    50%  { opacity: 1; transform: scaleY(1); transform-origin: top; }
+    100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  (function() {
+    const sectionId = "{{ section.id }}";
+    const canvas = document.getElementById('bf-particles-' + sectionId);
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], animFrame;
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function Particle() {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 1.5 + 0.4;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.alpha = Math.random() * 0.5 + 0.1;
+      this.color = Math.random() > 0.7 ? '99,102,241' : '0,245,255';
+    }
+
+    Particle.prototype.update = function() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0) this.x = W;
+      if (this.x > W) this.x = 0;
+      if (this.y < 0) this.y = H;
+      if (this.y > H) this.y = 0;
+    };
+
+    Particle.prototype.draw = function() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + this.color + ',' + this.alpha + ')';
+      ctx.fill();
+    };
+
+    function init() {
+      particles = [];
+      const count = Math.floor((W * H) / 14000);
+      for (let i = 0; i < count; i++) particles.push(new Particle());
+    }
+
+    function drawConnections() {
+      const maxDist = 120;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < maxDist) {
+            const alpha = (1 - dist / maxDist) * 0.12;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = 'rgba(0,245,255,' + alpha + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function loop() {
+      ctx.clearRect(0, 0, W, H);
+      drawConnections();
+      particles.forEach(function(p) { p.update(); p.draw(); });
+      animFrame = requestAnimationFrame(loop);
+    }
+
+    resize();
+    init();
+    loop();
+
+    window.addEventListener('resize', function() {
+      resize();
+      init();
+    });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "BF — Collection Hero",
+  "class": "section-wrapper",
+  "enabled_on": {
+    "templates": ["collection"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "BF — Collection Hero"
+    }
+  ]
+}
+{% endschema %}

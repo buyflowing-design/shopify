@@ -1,0 +1,212 @@
+/*
+ * BuyFlowing — Collection Page Overrides
+ * Dark-mode aesthetic: #050505 bg, #00f5ff accents, Inter/Outfit typography
+ * Applies to: template.collection, product cards, footer
+ */
+
+/* ── Global page background for collection template ──────────────── */
+.template-collection body,
+.template-collection .color-scheme-1,
+.template-collection .color-scheme-2,
+.template-collection .color-scheme-3 {
+  background-color: #050505 !important;
+}
+
+/* ── Product Grid — Card Enhancements ────────────────────────────── */
+.template-collection .product-grid__item {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity   0.35s ease;
+  will-change: transform;
+  animation: bf-card-appear 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes bf-card-appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.template-collection .product-grid__item:nth-child(1)  { animation-delay: 0.05s; }
+.template-collection .product-grid__item:nth-child(2)  { animation-delay: 0.10s; }
+.template-collection .product-grid__item:nth-child(3)  { animation-delay: 0.15s; }
+.template-collection .product-grid__item:nth-child(4)  { animation-delay: 0.20s; }
+.template-collection .product-grid__item:nth-child(5)  { animation-delay: 0.25s; }
+.template-collection .product-grid__item:nth-child(6)  { animation-delay: 0.30s; }
+.template-collection .product-grid__item:nth-child(7)  { animation-delay: 0.35s; }
+.template-collection .product-grid__item:nth-child(8)  { animation-delay: 0.40s; }
+
+.template-collection .product-grid__item:hover {
+  transform: translateY(-4px);
+  z-index: 2;
+}
+
+/* Card wrapper glow on hover */
+.template-collection .card-wrapper,
+.template-collection product-card {
+  position: relative;
+  border-radius: 12px;
+  transition: box-shadow 0.35s ease;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.template-collection .card-wrapper::after,
+.template-collection product-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: linear-gradient(135deg, rgba(0,245,255,0.04), transparent 60%);
+  pointer-events: none;
+}
+
+.template-collection .card-wrapper:hover::after,
+.template-collection product-card:hover::after {
+  opacity: 1;
+}
+
+.template-collection .product-grid__item:hover .card-wrapper,
+.template-collection .product-grid__item:hover product-card {
+  box-shadow: 0 0 0 1px rgba(0,245,255,0.2),
+              0 8px 32px rgba(0,245,255,0.08),
+              0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Card image */
+.template-collection .card-media,
+.template-collection .card-media img {
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.template-collection .product-grid__item:hover .card-media img {
+  transform: scale(1.04);
+}
+
+/* Product title */
+.template-collection .product-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(226, 232, 240, 0.9) !important;
+  transition: color 0.2s ease;
+  line-height: 1.4;
+}
+
+.template-collection .product-grid__item:hover .product-title {
+  color: #ffffff !important;
+}
+
+/* Price */
+.template-collection .price,
+.template-collection .price__current,
+.template-collection .price-item,
+.template-collection .price-item--regular {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700;
+  color: #00f5ff !important;
+}
+
+/* Price sale */
+.template-collection .price-item--sale {
+  color: #00f5ff !important;
+}
+
+.template-collection .price-item--regular.price-item--last {
+  color: rgba(226, 232, 240, 0.35) !important;
+  text-decoration: line-through;
+}
+
+/* ── Filters bar ─────────────────────────────────────────────────── */
+.template-collection .facets-container,
+.template-collection .facets__wrapper,
+.template-collection .facets-horizontal {
+  background: rgba(5,5,5,0.85) !important;
+  border-bottom: 1px solid rgba(0,245,255,0.1) !important;
+  backdrop-filter: blur(10px);
+}
+
+.template-collection .facets__disclosure-horizontal,
+.template-collection .facet-filters__sort {
+  color: rgba(226,232,240,0.8) !important;
+}
+
+.template-collection .facets__disclosure-horizontal:hover,
+.template-collection .facet-filters__sort:hover {
+  color: #00f5ff !important;
+}
+
+/* ── Footer — simplified dark style ─────────────────────────────── */
+.section-wrapper:has(.footer-content) {
+  background: #050505 !important;
+  border-top: 1px solid rgba(0,245,255,0.1) !important;
+}
+
+/* Email signup field */
+.email-signup input[type="email"],
+.email-signup .field__input {
+  background: rgba(0,245,255,0.04) !important;
+  border: 1px solid rgba(0,245,255,0.2) !important;
+  border-radius: 100px !important;
+  color: #e2e8f0 !important;
+  font-family: 'Inter', sans-serif;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.email-signup input[type="email"]:focus,
+.email-signup .field__input:focus {
+  border-color: rgba(0,245,255,0.5) !important;
+  box-shadow: 0 0 0 3px rgba(0,245,255,0.08) !important;
+  outline: none !important;
+}
+
+/* Email signup button */
+.email-signup button,
+.email-signup .button,
+.email-signup [type="submit"] {
+  background: linear-gradient(135deg, #00f5ff, #6366f1) !important;
+  color: #050505 !important;
+  font-weight: 700 !important;
+  font-family: 'Inter', sans-serif !important;
+  border: none !important;
+  border-radius: 100px !important;
+  transition: opacity 0.2s ease, transform 0.2s ease !important;
+}
+
+.email-signup button:hover,
+.email-signup .button:hover,
+.email-signup [type="submit"]:hover {
+  opacity: 0.88 !important;
+  transform: scale(1.02) !important;
+}
+
+/* Footer heading — "Únete a..." */
+.footer-content h2,
+.footer-content h3,
+.footer-content h4 {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #ffffff, rgba(226,232,240,0.8));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Footer utilities bar */
+.footer-utilities,
+.footer-utilities__wrapper {
+  background: #050505 !important;
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+  color: rgba(226,232,240,0.4) !important;
+}
+
+.footer-utilities a {
+  color: rgba(226,232,240,0.5) !important;
+  transition: color 0.2s ease !important;
+}
+
+.footer-utilities a:hover {
+  color: #00f5ff !important;
+}
