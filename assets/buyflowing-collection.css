@@ -64,27 +64,34 @@
     0 0 30px rgba(0, 245, 255, 0.05);
 }
 
-/* Image Container */
-.template-collection .card-media {
+/* Card Image / Gallery Container */
+.template-collection .card-gallery {
   position: relative;
   aspect-ratio: 4/5;
   overflow: hidden;
   background: #0a0a0a;
 }
 
-.template-collection .card-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+.template-collection .card-gallery img,
+.template-collection .card-gallery slideshow-component,
+.template-collection .card-gallery .product-media-container {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-.template-collection .product-grid__item:hover .card-media img {
+.template-collection .card-gallery img {
+  display: block !important;
+}
+
+
+.template-collection .product-grid__item:hover .card-gallery img {
   transform: scale(1.08);
 }
 
 /* Overlay Badge on Image */
-.template-collection .card-media::after {
+.template-collection .card-gallery::after {
   content: 'DIGITAL ASSET';
   position: absolute;
   top: 12px;
@@ -99,7 +106,9 @@
   border-radius: 100px;
   letter-spacing: 0.05em;
   opacity: 0.8;
+  z-index: 5;
 }
+
 
 /* Content Area */
 .template-collection .product-card__content {
@@ -170,6 +179,12 @@
 .template-collection .product-grid__item:hover product-card::before {
   transform: translateY(0);
 }
+
+/* Ensure the main link is always on top of our custom elements */
+.template-collection .product-card__link {
+  z-index: 20 !important;
+}
+
 
 
 /* ── Filters bar ─────────────────────────────────────────────────── */
