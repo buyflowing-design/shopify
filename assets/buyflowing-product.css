@@ -14,13 +14,20 @@
 .template-product .product-information,
 .template-product .main-product-section {
   background: #050505 !important;
-  animation: bf-prod-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation: bf-prod-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  padding-top: 40px !important;
 }
 
 @keyframes bf-prod-reveal {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(24px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* Category Badge Styling */
+.template-product [data-block-type="text"]:has(p[style*="Toolkit"]) {
+  margin-bottom: -10px !important;
+}
+
 
 /* ── Product title (H1/H3) ───────────────────────────────────────── */
 .template-product .product-details h1,
@@ -143,25 +150,46 @@
 /* ── Buy buttons ─────────────────────────────────────────────────── */
 .template-product .button--primary,
 .template-product button[type="submit"].button,
-.template-product .buy-buttons .button {
+.template-product .buy-buttons .button,
+.template-product .product-form__submit {
   background: linear-gradient(135deg, #00f5ff, #6366f1) !important;
   color: #050505 !important;
   font-family: 'Inter', sans-serif !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
+  font-size: 1.05rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
   border: none !important;
-  border-radius: 100px !important;
-  letter-spacing: 0.02em !important;
-  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+  border-radius: 12px !important;
+  padding: 18px 30px !important;
+  width: 100% !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   box-shadow: 0 4px 20px rgba(0,245,255,0.25) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
 }
 
 .template-product .button--primary:hover,
 .template-product button[type="submit"].button:hover,
-.template-product .buy-buttons .button:hover {
-  opacity: 0.88 !important;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 8px 30px rgba(0,245,255,0.35) !important;
+.template-product .product-form__submit:hover {
+  opacity: 1 !important;
+  transform: translateY(-3px) scale(1.01) !important;
+  box-shadow: 0 12px 40px rgba(0,245,255,0.4) !important;
 }
+
+/* Add an arrow to the button via CSS if it doesn't have one */
+.template-product .product-form__submit::after {
+  content: '\2192';
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.template-product .product-form__submit:hover::after {
+  transform: translateX(5px);
+}
+
 
 /* Quantity selector */
 .template-product .quantity-selector {

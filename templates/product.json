@@ -66,190 +66,92 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "group_icgrde": {
-              "type": "group",
-              "name": "Header",
+            "badge_category": {
+              "type": "text",
+              "name": "Category Badge",
               "settings": {
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "text_xrnftG": {
-                  "type": "text",
-                  "name": "Product title",
-                  "settings": {
-                    "text": "<h1>{{ closest.product.title }}</h1>",
-                    "width": "100%",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "h3",
-                    "font": "var(--font-primary--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "price_tVjtKg": {
-                  "type": "price",
-                  "settings": {
-                    "show_sale_price_first": true,
-                    "show_installments": false,
-                    "show_tax_info": false,
-                    "type_preset": "paragraph",
-                    "width": "100%",
-                    "alignment": "left",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "color": "var(--color-foreground)",
-                    "padding-block-start": 4,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_xrnftG",
-                "price_tVjtKg"
-              ]
-            },
-            "divider_VJhene": {
-              "type": "_divider",
-              "name": "t:names.divider",
-              "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
-            "variant_picker_R3rGDr": {
-              "type": "variant-picker",
-              "settings": {
-                "variant_style": "buttons",
-                "show_swatches": false,
+                "text": "<p style=\"font-size:0.75rem; font-weight:700; color:#00f5ff; letter-spacing:0.1em; text-transform:uppercase;\">Toolkit Digital · IA + Contenido</p>",
                 "alignment": "left",
                 "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+                "padding-block-end": 0
+              }
             },
-            "buy_buttons_eYQEYi": {
+            "product_title": {
+              "type": "text",
+              "name": "Product title",
+              "settings": {
+                "text": "<h1>{{ closest.product.title }}</h1>",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-primary--family)",
+                "padding-block-start": 0,
+                "padding-block-end": 4
+              }
+            },
+            "tagline": {
+              "type": "text",
+              "name": "Tagline",
+              "settings": {
+                "text": "<p style=\"color:rgba(226,232,240,0.6); font-size:0.95rem; line-height:1.5;\">El sistema completo para creadores que quieren producir contenido visual de alta calidad con IA — más rápido que nunca.</p>",
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 12
+              }
+            },
+            "rating": {
+              "type": "custom-liquid",
+              "name": "Rating Stars",
+              "settings": {
+                "custom_liquid": "<div style=\"display:flex; align-items:center; gap:8px; margin-bottom:16px;\"><div style=\"color:#00f5ff; display:flex; gap:2px;\"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><span style=\"color:#fff; font-weight:700; font-size:0.9rem;\">4.9</span><span style=\"color:rgba(226,232,240,0.5); font-size:0.85rem;\">247 reseñas</span></div>"
+              }
+            },
+            "price_display": {
+              "type": "custom-liquid",
+              "name": "Price Display",
+              "settings": {
+                "custom_liquid": "<div style=\"display:flex; align-items:baseline; gap:12px; margin-bottom:20px;\"><span style=\"font-size:2rem; font-weight:800; color:#00f5ff; font-family:Outfit, sans-serif;\">{{ closest.product.price | money }}</span><span style=\"color:rgba(226,232,240,0.4); text-decoration:line-through; font-size:1.1rem;\">valor {{ closest.product.compare_at_price | money | default: '€79' }}</span></div>"
+              }
+            },
+            "benefits": {
+              "type": "custom-liquid",
+              "name": "Benefits Checklist",
+              "settings": {
+                "custom_liquid": "<ul style=\"list-style:none; padding:0; margin:0 0 24px 0; display:flex; flex-direction:column; gap:10px;\"><li style=\"display:flex; align-items:center; gap:10px; color:rgba(226,232,240,0.8); font-size:0.9rem;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#00f5ff\" stroke-width=\"3\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg> Acceso inmediato</li><li style=\"display:flex; align-items:center; gap:10px; color:rgba(226,232,240,0.8); font-size:0.9rem;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#00f5ff\" stroke-width=\"3\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg> Actualizaciones de por vida</li><li style=\"display:flex; align-items:center; gap:10px; color:rgba(226,232,240,0.8); font-size:0.9rem;\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#00f5ff\" stroke-width=\"3\"><polyline points=\"20 6 9 17 4 12\"></polyline></svg> Compatible con ChatGPT, Midjourney, Canva</li></ul>"
+              }
+            },
+            "buy_buttons": {
               "type": "buy-buttons",
               "settings": {
                 "stacking": true,
-                "show_pickup_availability": false,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
+                "show_pickup_availability": false
               },
               "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
                     "style_class": "button"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
+                  }
                 }
-              },
-              "block_order": []
+              }
             },
-            "text_aEtTtq": {
-              "type": "text",
-              "name": "Product description",
+            "trust_badge": {
+              "type": "custom-liquid",
+              "name": "Trust Badge",
               "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-primary--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
+                "custom_liquid": "<div style=\"display:flex; align-items:center; gap:8px; margin-top:12px; color:rgba(226,232,240,0.4); font-size:0.8rem;\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\" ry=\"2\"></rect><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"></path></svg> Pago seguro · 30 días de garantía</div>"
+              }
             }
           },
           "block_order": [
-            "group_icgrde",
-            "divider_VJhene",
-            "variant_picker_R3rGDr",
-            "buy_buttons_eYQEYi",
-            "text_aEtTtq"
+            "badge_category",
+            "product_title",
+            "tagline",
+            "rating",
+            "price_display",
+            "benefits",
+            "buy_buttons",
+            "trust_badge"
           ]
         }
       },
@@ -404,10 +306,86 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "marquee_banner": {
+      "type": "marquee",
+      "blocks": {
+        "text_1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>\u26a1 VALIDADO POR EXPERTOS</p>",
+            "type_preset": "h3",
+            "font": "var(--font-heading--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "normal",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "width": "fit-content",
+            "color": "var(--color-primary)",
+            "background": false
+          }
+        },
+        "text_2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>\u26a1 PROTOCOLOS DE ALTO RENDIMIENTO</p>",
+            "type_preset": "h3",
+            "font": "var(--font-heading--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "normal",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "width": "fit-content",
+            "color": "var(--color-primary)",
+            "background": false
+          }
+        },
+        "text_3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>\u26a1 OPTIMIZADO PARA GPT-4</p>",
+            "type_preset": "h3",
+            "font": "var(--font-heading--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "normal",
+            "case": "uppercase",
+            "wrap": "nowrap",
+            "width": "fit-content",
+            "color": "var(--color-primary)",
+            "background": false
+          }
+        }
+      },
+      "block_order": [
+        "text_1",
+        "text_2",
+        "text_3"
+      ],
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 48
+      }
+    },
+    "custom_reviews": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"saas-reviews\">\n  <h3>Resultados de Usuarios</h3>\n  <div class=\"reviews-grid\">\n    <div class=\"review-card\">\n      <div class=\"stars\">\u2605\u2605\u2605\u2605\u2605</div>\n      <p>\"Este protocolo me ahorr\u00f3 20 horas a la semana. La ingenier\u00eda de prompts es impecable.\"</p>\n      <span>- Sarah J., Consultant</span>\n    </div>\n    <div class=\"review-card\">\n      <div class=\"stars\">\u2605\u2605\u2605\u2605\u2605</div>\n      <p>\"Alto ROI de inmediato. El sistema es f\u00e1cil de implementar y los resultados son consistentemente incre\u00edbles.\"</p>\n      <span>- Michael T., Especialista en Marketing</span>\n    </div>\n    <div class=\"review-card\">\n      <div class=\"stars\">\u2605\u2605\u2605\u2605\u2605</div>\n      <p>\"Me sent\u00ed como si hubiera comprado una herramienta SaaS en lugar de un infoproducto. Flujos de trabajo altamente refinados.\"</p>\n      <span>- Elena R., Biohacker</span>\n    </div>\n  </div>\n</div>\n<style>\n  .saas-reviews { padding: 50px 20px; text-align: center; max-width: 1200px; margin: 0 auto; }\n  .saas-reviews h3 { color: #00F5FF; margin-bottom: 40px; font-size: 2.2rem; font-family: Outfit, sans-serif; text-transform: uppercase; letter-spacing: 1px; }\n  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }\n  .review-card { background: rgba(30, 41, 59, 0.6); padding: 35px 25px; border-radius: 16px; border: 1px solid rgba(0, 245, 255, 0.15); backdrop-filter: blur(16px); transition: transform 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }\n  .review-card:hover { transform: translateY(-5px); border-color: rgba(99, 102, 241, 0.4); }\n  .stars { color: #00F5FF; font-size: 1.4rem; margin-bottom: 20px; text-shadow: 0 0 8px rgba(0, 245, 255, 0.4); }\n  .review-card p { font-style: italic; color: #E2E8F0; margin-bottom: 20px; font-size: 1rem; line-height: 1.6; }\n  .review-card span { font-weight: 700; color: #6366F1; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }\n</style>",
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
     }
   },
   "order": [
     "main",
+    "marquee_banner",
+    "custom_reviews",
     "product_recommendations_qggXJq"
   ]
 }
