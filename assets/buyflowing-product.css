@@ -1,0 +1,236 @@
+/*
+ * BuyFlowing — Product Page Overrides
+ * Dark aesthetic: #050505 bg, #00f5ff accents, Inter/Outfit typography
+ * Inspired by ejemplo-productos.html
+ */
+
+/* ── Global product page background ─────────────────────────────── */
+.template-product body,
+.template-product .color-scheme-1 {
+  background-color: #050505 !important;
+}
+
+/* ── Product information wrapper ─────────────────────────────────── */
+.template-product .product-information,
+.template-product .main-product-section {
+  background: #050505 !important;
+  animation: bf-prod-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes bf-prod-reveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Product title (H1/H3) ───────────────────────────────────────── */
+.template-product .product-details h1,
+.template-product .product-details h2,
+.template-product .product-details h3,
+.template-product [class*="product-title"],
+.template-product .product-details .h3 {
+  font-family: 'Outfit', 'Inter', sans-serif !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* ── Price ───────────────────────────────────────────────────────── */
+.template-product .price__sale .price-item--sale,
+.template-product .price-item--sale {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.6rem !important;
+  color: #00f5ff !important;
+}
+
+.template-product .price-item--regular.compare-at-price,
+.template-product .compare-at-price {
+  color: rgba(226, 232, 240, 0.4) !important;
+  text-decoration: line-through;
+  font-size: 1rem !important;
+}
+
+/* Price discount badge */
+.template-product .price-badge,
+.template-product .badge--sale {
+  background: linear-gradient(135deg, #00f5ff, #6366f1) !important;
+  color: #050505 !important;
+  font-weight: 700 !important;
+  border-radius: 100px !important;
+  padding: 2px 10px !important;
+  font-size: 0.72rem !important;
+}
+
+/* ── Media gallery ───────────────────────────────────────────────── */
+.template-product .product-media-gallery__container,
+.template-product .product-media__media {
+  border-radius: 12px !important;
+  overflow: hidden;
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid rgba(0,245,255,0.08) !important;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.template-product .product-media-gallery__container:hover,
+.template-product .product-media__media:hover {
+  border-color: rgba(0,245,255,0.2) !important;
+  box-shadow: 0 0 0 1px rgba(0,245,255,0.12),
+              0 12px 40px rgba(0,0,0,0.5) !important;
+}
+
+.template-product .product-media__media img {
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.template-product .product-media__media:hover img {
+  transform: scale(1.03) !important;
+}
+
+/* ── Product description ─────────────────────────────────────────── */
+.template-product .product-details .rte,
+.template-product .product-details p,
+.template-product .product-details li {
+  font-family: 'Inter', sans-serif !important;
+  color: rgba(226, 232, 240, 0.75) !important;
+  line-height: 1.7 !important;
+  font-size: 0.9rem !important;
+}
+
+.template-product .product-details .rte h2,
+.template-product .product-details .rte h3,
+.template-product .product-details .rte h4 {
+  font-family: 'Outfit', sans-serif !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  margin-top: 1.5em !important;
+}
+
+.template-product .product-details .rte strong {
+  color: #00f5ff !important;
+  font-weight: 600;
+}
+
+/* ── Divider ─────────────────────────────────────────────────────── */
+.template-product hr,
+.template-product [class*="divider"] {
+  border-color: rgba(0, 245, 255, 0.1) !important;
+  margin: 24px 0 !important;
+}
+
+/* ── Variant picker ──────────────────────────────────────────────── */
+.template-product .variant-picker__button {
+  background: rgba(0,245,255,0.05) !important;
+  border: 1px solid rgba(0,245,255,0.2) !important;
+  color: rgba(226,232,240,0.9) !important;
+  border-radius: 10px !important;
+  transition: all 0.2s ease !important;
+}
+
+.template-product .variant-picker__button:hover {
+  background: rgba(0,245,255,0.1) !important;
+  border-color: rgba(0,245,255,0.5) !important;
+  color: #00f5ff !important;
+}
+
+.template-product .variant-picker__button--selected {
+  background: rgba(0,245,255,0.15) !important;
+  border-color: #00f5ff !important;
+  color: #00f5ff !important;
+  box-shadow: 0 0 0 1px rgba(0,245,255,0.3) !important;
+}
+
+/* ── Buy buttons ─────────────────────────────────────────────────── */
+.template-product .button--primary,
+.template-product button[type="submit"].button,
+.template-product .buy-buttons .button {
+  background: linear-gradient(135deg, #00f5ff, #6366f1) !important;
+  color: #050505 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  border: none !important;
+  border-radius: 100px !important;
+  letter-spacing: 0.02em !important;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-shadow: 0 4px 20px rgba(0,245,255,0.25) !important;
+}
+
+.template-product .button--primary:hover,
+.template-product button[type="submit"].button:hover,
+.template-product .buy-buttons .button:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(0,245,255,0.35) !important;
+}
+
+/* Quantity selector */
+.template-product .quantity-selector {
+  background: rgba(0,245,255,0.04) !important;
+  border: 1px solid rgba(0,245,255,0.15) !important;
+  border-radius: 100px !important;
+  overflow: hidden;
+}
+
+.template-product .quantity-selector input {
+  color: #ffffff !important;
+  background: transparent !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+}
+
+.template-product .quantity-selector .quantity-minus,
+.template-product .quantity-selector .quantity-plus {
+  color: rgba(226,232,240,0.7) !important;
+  transition: color 0.2s ease !important;
+}
+
+.template-product .quantity-selector .quantity-minus:hover,
+.template-product .quantity-selector .quantity-plus:hover {
+  color: #00f5ff !important;
+}
+
+/* ── Marquee banner ──────────────────────────────────────────────── */
+.template-product .marquee-section,
+.template-product [class*="marquee"] {
+  background: rgba(0,245,255,0.03) !important;
+  border-top: 1px solid rgba(0,245,255,0.08) !important;
+  border-bottom: 1px solid rgba(0,245,255,0.08) !important;
+}
+
+/* ── Reviews section (custom-liquid) ────────────────────────────── */
+.template-product .saas-reviews {
+  padding: 60px 20px !important;
+}
+
+/* ── Product recommendations ─────────────────────────────────────── */
+.template-product .product-recommendations {
+  background: #050505 !important;
+  border-top: 1px solid rgba(0,245,255,0.08) !important;
+}
+
+.template-product .product-recommendations h3 {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  font-size: clamp(1.4rem, 3vw, 2rem) !important;
+  background: linear-gradient(135deg, #ffffff, rgba(226,232,240,0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Sticky add to cart bar ──────────────────────────────────────── */
+.template-product .sticky-atc {
+  background: rgba(5,5,5,0.95) !important;
+  border-top: 1px solid rgba(0,245,255,0.15) !important;
+  backdrop-filter: blur(20px) !important;
+}
+
+/* ── Scroll-triggered entrance for details column ─────────────────── */
+.template-product .product-details {
+  animation: bf-prod-reveal 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.template-product .product-media-gallery {
+  animation: bf-prod-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}

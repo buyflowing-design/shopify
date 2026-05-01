@@ -1,0 +1,465 @@
+{% comment %} BuyFlowing — Contact Hero Section {% endcomment %}
+
+<div class="bf-contact-hero" id="bf-contact-hero-{{ section.id }}">
+
+  {%- comment -%} Fondo animado {%- endcomment -%}
+  <div class="bf-ch-bg" aria-hidden="true">
+    <div class="bf-contact-grid-overlay"></div>
+    <div class="bf-contact-glow bf-contact-glow--1"></div>
+    <div class="bf-contact-glow bf-contact-glow--2"></div>
+    <canvas class="bf-contact-particles" id="bf-contact-canvas-{{ section.id }}"></canvas>
+  </div>
+
+  {%- comment -%} Elemento 3D: Esfera de datos {%- endcomment -%}
+  <div class="bf-contact-3d" aria-hidden="true">
+    <div class="bf-sphere-wrap">
+      <div class="bf-sphere">
+        <div class="bf-sphere__ring bf-sphere__ring--1"></div>
+        <div class="bf-sphere__ring bf-sphere__ring--2"></div>
+        <div class="bf-sphere__ring bf-sphere__ring--3"></div>
+        <div class="bf-sphere__core"></div>
+        {%- for i in (1..8) -%}
+          <div class="bf-sphere__dot" style="--i: {{ i }};"></div>
+        {%- endfor -%}
+      </div>
+    </div>
+    <div class="bf-contact-signal">
+      <div class="bf-signal-ring bf-signal-ring--1"></div>
+      <div class="bf-signal-ring bf-signal-ring--2"></div>
+      <div class="bf-signal-ring bf-signal-ring--3"></div>
+    </div>
+  </div>
+
+  {%- comment -%} Contenido {%- endcomment -%}
+  <div class="bf-contact-content">
+    <div class="bf-contact-badge">
+      <span class="bf-contact-badge__dot"></span>
+      <span>Respuesta en &lt;24h</span>
+    </div>
+    <h1 class="bf-contact-title">
+      Conecta con<br>
+      <span class="bf-contact-title--accent">el equipo</span>
+    </h1>
+    <p class="bf-contact-desc">
+      ¿Tienes alguna pregunta sobre nuestros productos? Estamos aquí para ayudarte a escalar más rápido.
+    </p>
+    <div class="bf-contact-meta">
+      <div class="bf-contact-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span>hello@scaleflow.io</span>
+      </div>
+      <div class="bf-contact-meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        <span>Lun–Vie, 9:00–18:00 CET</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% stylesheet %}
+  /* ── BuyFlowing Contact Hero ─────────────────────────────────────── */
+  .bf-contact-hero {
+    position: relative;
+    width: 100%;
+    min-height: 52vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #050505;
+    font-family: 'Inter', 'Outfit', sans-serif;
+  }
+
+  @media (min-width: 750px) { .bf-contact-hero { min-height: 62vh; } }
+
+  /* Background */
+  .bf-contact-hero .bf-ch-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .bf-contact-grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0, 245, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 245, 255, 0.035) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: bf-contact-grid 24s linear infinite;
+  }
+
+  @keyframes bf-contact-grid {
+    0%   { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+  }
+
+  .bf-contact-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    pointer-events: none;
+  }
+
+  .bf-contact-glow--1 {
+    width: 400px; height: 400px;
+    top: -60px; left: -60px;
+    background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
+    animation: bf-glow-pulse 7s ease-in-out infinite alternate;
+  }
+
+  .bf-contact-glow--2 {
+    width: 350px; height: 350px;
+    bottom: -40px; right: -40px;
+    background: radial-gradient(circle, rgba(0,245,255,0.12) 0%, transparent 70%);
+    animation: bf-glow-pulse 9s ease-in-out infinite alternate-reverse;
+  }
+
+  @keyframes bf-glow-pulse {
+    0%   { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1;   transform: scale(1.2); }
+  }
+
+  .bf-contact-particles {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* ── 3D Sphere ───────────────────────────────────────────────────── */
+  .bf-contact-3d {
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px;
+    height: 220px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  @media (min-width: 1024px) { .bf-contact-3d { display: flex; } }
+
+  .bf-sphere-wrap {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    perspective: 700px;
+    z-index: 2;
+  }
+
+  .bf-sphere {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: bf-sphere-spin 16s linear infinite;
+    position: relative;
+  }
+
+  @keyframes bf-sphere-spin {
+    0%   { transform: rotateX(20deg) rotateY(0deg); }
+    100% { transform: rotateX(20deg) rotateY(360deg); }
+  }
+
+  .bf-sphere__ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 245, 255, 0.4);
+    transform-style: preserve-3d;
+  }
+
+  .bf-sphere__ring--1 {
+    width: 140px; height: 140px;
+    margin: -70px 0 0 -70px;
+    transform: rotateX(0deg);
+  }
+
+  .bf-sphere__ring--2 {
+    width: 140px; height: 140px;
+    margin: -70px 0 0 -70px;
+    transform: rotateX(60deg);
+    border-color: rgba(99,102,241,0.35);
+  }
+
+  .bf-sphere__ring--3 {
+    width: 140px; height: 140px;
+    margin: -70px 0 0 -70px;
+    transform: rotateX(120deg);
+    border-color: rgba(0,245,255,0.2);
+  }
+
+  .bf-sphere__core {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 40px; height: 40px;
+    margin: -20px 0 0 -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(0,245,255,0.5), rgba(99,102,241,0.3), transparent 70%);
+    box-shadow: 0 0 20px rgba(0,245,255,0.3), inset 0 0 10px rgba(99,102,241,0.2);
+    animation: bf-core-pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes bf-core-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(0,245,255,0.3), inset 0 0 10px rgba(99,102,241,0.2); }
+    50%       { box-shadow: 0 0 40px rgba(0,245,255,0.5), inset 0 0 20px rgba(99,102,241,0.4); }
+  }
+
+  .bf-sphere__dot {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 6px; height: 6px;
+    margin: -3px 0 0 -3px;
+    border-radius: 50%;
+    background: #00f5ff;
+    box-shadow: 0 0 8px #00f5ff;
+    transform: rotateY(calc(var(--i) * 45deg)) translateZ(70px);
+    animation: bf-dot-twinkle calc(2s + var(--i) * 0.3s) ease-in-out infinite alternate;
+  }
+
+  @keyframes bf-dot-twinkle {
+    0%   { opacity: 0.3; transform: rotateY(calc(var(--i) * 45deg)) translateZ(70px) scale(0.7); }
+    100% { opacity: 1;   transform: rotateY(calc(var(--i) * 45deg)) translateZ(70px) scale(1.2); }
+  }
+
+  /* Signal rings */
+  .bf-contact-signal {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bf-signal-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(0,245,255,0.15);
+    animation: bf-signal-expand 3s ease-out infinite;
+  }
+
+  .bf-signal-ring--1 { width: 160px; height: 160px; animation-delay: 0s; }
+  .bf-signal-ring--2 { width: 200px; height: 200px; animation-delay: 1s; }
+  .bf-signal-ring--3 { width: 240px; height: 240px; animation-delay: 2s; }
+
+  @keyframes bf-signal-expand {
+    0%   { opacity: 0.6; transform: scale(0.8); }
+    100% { opacity: 0;   transform: scale(1.2); }
+  }
+
+  /* ── Contact Content ─────────────────────────────────────────────── */
+  .bf-contact-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 72px 24px 56px;
+    max-width: 620px;
+    animation: bf-fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @media (min-width: 1024px) {
+    .bf-contact-content {
+      text-align: left;
+      margin-left: 8%;
+      margin-right: auto;
+    }
+  }
+
+  @keyframes bf-fade-up {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Badge */
+  .bf-contact-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 245, 255, 0.07);
+    border: 1px solid rgba(0, 245, 255, 0.2);
+    border-radius: 100px;
+    padding: 5px 14px;
+    margin-bottom: 22px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #00f5ff;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: bf-fade-up 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .bf-contact-badge__dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #00f5ff;
+    box-shadow: 0 0 8px #00f5ff;
+    animation: bf-badge-blink 2s ease-in-out infinite;
+  }
+
+  @keyframes bf-badge-blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.3; }
+  }
+
+  /* Title */
+  .bf-contact-title {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.05;
+    margin: 0 0 18px;
+    letter-spacing: -0.02em;
+    animation: bf-fade-up 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .bf-contact-title--accent {
+    background: linear-gradient(135deg, #00f5ff, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Desc */
+  .bf-contact-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.88rem, 1.4vw, 1rem);
+    color: rgba(226, 232, 240, 0.65);
+    line-height: 1.65;
+    margin: 0 0 28px;
+    max-width: 480px;
+    animation: bf-fade-up 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Meta */
+  .bf-contact-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: bf-fade-up 0.8s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  @media (min-width: 600px) {
+    .bf-contact-meta { flex-direction: row; gap: 24px; justify-content: center; }
+  }
+
+  @media (min-width: 1024px) {
+    .bf-contact-meta { justify-content: flex-start; }
+  }
+
+  .bf-contact-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(226, 232, 240, 0.55);
+    transition: color 0.2s ease;
+  }
+
+  .bf-contact-meta-item svg { color: #00f5ff; flex-shrink: 0; }
+  .bf-contact-meta-item:hover { color: rgba(226, 232, 240, 0.9); }
+{% endstylesheet %}
+
+{% javascript %}
+  (function () {
+    var canvas = document.getElementById('bf-contact-canvas-{{ section.id }}');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var W, H, particles = [], raf;
+
+    function resize() {
+      W = canvas.width  = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+
+    function Particle() {
+      this.reset();
+    }
+
+    Particle.prototype.reset = function () {
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
+      this.r = Math.random() * 1.2 + 0.3;
+      this.vx = (Math.random() - 0.5) * 0.35;
+      this.vy = (Math.random() - 0.5) * 0.35;
+      this.alpha = Math.random() * 0.45 + 0.08;
+      this.cyan = Math.random() > 0.6;
+    };
+
+    Particle.prototype.update = function () {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0) this.x = W;
+      if (this.x > W) this.x = 0;
+      if (this.y < 0) this.y = H;
+      if (this.y > H) this.y = 0;
+    };
+
+    Particle.prototype.draw = function () {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      ctx.fillStyle = this.cyan
+        ? 'rgba(0,245,255,' + this.alpha + ')'
+        : 'rgba(99,102,241,' + this.alpha + ')';
+      ctx.fill();
+    };
+
+    function init() {
+      var count = Math.max(20, Math.floor((W * H) / 16000));
+      particles = [];
+      for (var i = 0; i < count; i++) particles.push(new Particle());
+    }
+
+    function drawLines() {
+      for (var i = 0; i < particles.length; i++) {
+        for (var j = i + 1; j < particles.length; j++) {
+          var dx = particles[i].x - particles[j].x;
+          var dy = particles[i].y - particles[j].y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 110) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = 'rgba(99,102,241,' + ((1 - dist / 110) * 0.1) + ')';
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function loop() {
+      ctx.clearRect(0, 0, W, H);
+      drawLines();
+      particles.forEach(function (p) { p.update(); p.draw(); });
+      raf = requestAnimationFrame(loop);
+    }
+
+    resize(); init(); loop();
+    window.addEventListener('resize', function () { resize(); init(); });
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "BF — Contact Hero",
+  "class": "section-wrapper",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "BF — Contact Hero"
+    }
+  ]
+}
+{% endschema %}

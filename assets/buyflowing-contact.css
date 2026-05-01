@@ -1,0 +1,172 @@
+/*
+ * BuyFlowing — Contact Page Overrides
+ * Dark aesthetic: #050505 bg, #00f5ff accents, Inter/Outfit typography
+ */
+
+/* ── Global page background ─────────────────────────────────────── */
+.template-page body,
+.template-page .color-scheme-1 {
+  background-color: #050505 !important;
+}
+
+/* ── Hidden default title (replaced by hero) ─────────────────────── */
+.template-page .main-page-section .text-block:first-of-type h1,
+.template-page .main-page-section .text-block:first-of-type h2 {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* ── Contact Form Container ──────────────────────────────────────── */
+.template-page .section,
+.template-page .contact-form-section {
+  background: #050505 !important;
+}
+
+/* ── Form glassmorphism card ─────────────────────────────────────── */
+.template-page .contact-form,
+.template-page form[action="/contact"] {
+  background: rgba(255,255,255,0.025) !important;
+  border: 1px solid rgba(0,245,255,0.1) !important;
+  border-radius: 20px !important;
+  padding: 40px !important;
+  backdrop-filter: blur(20px) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4),
+              0 0 0 1px rgba(0,245,255,0.05) !important;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  animation: bf-form-appear 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes bf-form-appear {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.template-page .contact-form:focus-within,
+.template-page form[action="/contact"]:focus-within {
+  border-color: rgba(0,245,255,0.2) !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4),
+              0 0 0 1px rgba(0,245,255,0.1),
+              0 0 40px rgba(0,245,255,0.05) !important;
+}
+
+/* ── Labels ──────────────────────────────────────────────────────── */
+.template-page .contact-form label,
+.template-page form[action="/contact"] label {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.78rem !important;
+  font-weight: 500 !important;
+  color: rgba(226,232,240,0.6) !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  margin-bottom: 6px !important;
+}
+
+/* ── Inputs & Textarea ───────────────────────────────────────────── */
+.template-page .contact-form input[type="text"],
+.template-page .contact-form input[type="email"],
+.template-page .contact-form input[type="tel"],
+.template-page .contact-form textarea,
+.template-page form[action="/contact"] input[type="text"],
+.template-page form[action="/contact"] input[type="email"],
+.template-page form[action="/contact"] input[type="tel"],
+.template-page form[action="/contact"] textarea,
+.template-page .field__input {
+  background: rgba(0,0,0,0.3) !important;
+  border: 1px solid rgba(0,245,255,0.12) !important;
+  border-radius: 10px !important;
+  color: rgba(226,232,240,0.9) !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.9rem !important;
+  padding: 14px 16px !important;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+  width: 100% !important;
+  outline: none !important;
+}
+
+.template-page .contact-form input:focus,
+.template-page .contact-form textarea:focus,
+.template-page form[action="/contact"] input:focus,
+.template-page form[action="/contact"] textarea:focus,
+.template-page .field__input:focus {
+  border-color: rgba(0,245,255,0.4) !important;
+  box-shadow: 0 0 0 3px rgba(0,245,255,0.08),
+              0 0 20px rgba(0,245,255,0.05) !important;
+  color: #ffffff !important;
+}
+
+.template-page .contact-form input::placeholder,
+.template-page .contact-form textarea::placeholder,
+.template-page form[action="/contact"] input::placeholder,
+.template-page form[action="/contact"] textarea::placeholder {
+  color: rgba(226,232,240,0.25) !important;
+}
+
+/* ── Submit button ───────────────────────────────────────────────── */
+.template-page .contact-form button[type="submit"],
+.template-page form[action="/contact"] button[type="submit"],
+.template-page .contact-form .button,
+.template-page form[action="/contact"] .button {
+  background: linear-gradient(135deg, #00f5ff, #6366f1) !important;
+  color: #050505 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.9rem !important;
+  border: none !important;
+  border-radius: 100px !important;
+  padding: 14px 32px !important;
+  letter-spacing: 0.04em !important;
+  cursor: pointer !important;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-shadow: 0 4px 20px rgba(0,245,255,0.25) !important;
+}
+
+.template-page .contact-form button[type="submit"]:hover,
+.template-page form[action="/contact"] button[type="submit"]:hover,
+.template-page .contact-form .button:hover,
+.template-page form[action="/contact"] .button:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 30px rgba(0,245,255,0.35) !important;
+}
+
+/* ── Success / Error messages ────────────────────────────────────── */
+.template-page .contact-form .alert--success,
+.template-page form[action="/contact"] .alert--success {
+  background: rgba(0,245,255,0.08) !important;
+  border: 1px solid rgba(0,245,255,0.25) !important;
+  border-radius: 10px !important;
+  color: #00f5ff !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.template-page .contact-form .alert--error,
+.template-page form[action="/contact"] .alert--error {
+  background: rgba(139,0,0,0.1) !important;
+  border: 1px solid rgba(139,0,0,0.3) !important;
+  border-radius: 10px !important;
+}
+
+/* ── Page text content (title + body above form) ─────────────────── */
+.template-page .main-page-section {
+  background: #050505 !important;
+}
+
+.template-page .main-page-section h1,
+.template-page .main-page-section h2 {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  background: linear-gradient(135deg, #ffffff 60%, rgba(226,232,240,0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.template-page .main-page-section p,
+.template-page .main-page-section .rte {
+  font-family: 'Inter', sans-serif !important;
+  color: rgba(226,232,240,0.65) !important;
+  line-height: 1.7 !important;
+}

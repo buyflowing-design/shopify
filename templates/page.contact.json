@@ -1,13 +1,13 @@
 /*
  * ------------------------------------------------------------
  * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
  * ------------------------------------------------------------
  */{
   "sections": {
+    "contact_hero": {
+      "type": "contact-hero-buyflowing",
+      "settings": {}
+    },
     "main": {
       "type": "main-page",
       "blocks": {
@@ -98,7 +98,7 @@
               "type": "contact-form-submit-button",
               "static": true,
               "settings": {
-                "label": "Submit",
+                "label": "Enviar mensaje",
                 "style_class": "button",
                 "width": "fit-content",
                 "custom_width": 100,
@@ -145,6 +145,7 @@
     }
   },
   "order": [
+    "contact_hero",
     "main",
     "form"
   ]
